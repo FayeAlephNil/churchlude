@@ -2,6 +2,7 @@ module Data.Churchlude.Either where
 
 import Churchlude.External
 import Churchlude.Eq
+import Churchlude.Boolish
 
 newtype Either a b = Either {
   either :: forall r . (a -> r) -> (b -> r) -> r

@@ -26,6 +26,7 @@ github: Strikingwolf/churchlude
 library:
   dependencies:
   - base
+  - flow
   source-dirs: library
 license: MIT
 maintainer: Strikingwolf
@@ -50,3 +51,4 @@ default-extensions:
   - NoImplicitPrelude
   - TypeOperators
   - ConstraintKinds
+  - MultiParamTypeClasses

@@ -1,5 +1,9 @@
 module Churchlude.Numeric where
 
+infixl 6 +
+infixl 6 -
+infixl 7 *
+
 class Semigroup a where
   (+) :: a -> a -> a
 
@@ -16,7 +20,7 @@ class (Cancellative a, Monoid a) => Group a where
 class (Monoid a) => Rg a where
   (*) :: a -> a -> a
 
-type Rng a = (Cancellative a, Rg a)
+type Rng a = (Group a, Rg a)
 
 class (Rg a) => Rig a where
   one :: a
