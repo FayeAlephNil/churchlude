@@ -10,8 +10,8 @@ import Churchlude.External
 
 newtype Ratio = Ratio (Int :*: Int)
 
--- TODO
--- ratio :: Int -> Int -> Ratio
+-- TODO gcd
+-- ratio :: Int -> Int -> Maybe Ratio
 -- ratio i i' = _
 
 instance Int <: Ratio where
@@ -33,3 +33,18 @@ instance Semigroup Ratio where
       st  = snd t
       ft' = fst t'
       st' = snd t'
+
+instance Cancellative Ratio where
+  r - r' = r + invert r'
+
+instance Monoid Ratio where
+  zero = Ratio $ zero # one
+
+instance Group Ratio where
+  invert (Ratio t) = Ratio $ invert (fst t) # snd t
+
+instance Rg Ratio where
+  (Ratio t) * (Ratio t') = Ratio $ (fst t * fst t') # (snd t * snd t')
+
+instance Rig Ratio where
+  one = Ratio $ one # one
